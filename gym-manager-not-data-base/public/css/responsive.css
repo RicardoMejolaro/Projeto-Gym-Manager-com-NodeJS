@@ -1,0 +1,80 @@
+@media(min-width: 300px) and (max-width: 639px) {
+  header {
+    width: 98%;
+    padding: 5px;
+    display: flex;
+  }
+
+  .links {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .links a {
+    color: white;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+    margin: 0 5px;
+    padding-bottom: 3px;
+  }
+
+  .links-icons-socials {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 5px;
+  }
+    
+  .links-icons-socials img {
+    width: 30px;
+    margin: 10px;
+  }
+
+  #wrapper img {
+    max-height: 150px;
+    margin-bottom: 10px;
+  }
+
+  #wrapper h1 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: bold;
+  }
+
+  .links-icons-tecnologies img {
+    width: 30px;
+    margin: 10px;
+  }
+
+  /*=======Cards========*/
+
+  .cards {
+    max-width: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+ 
+}
+
+@media (min-width: 640px) and (max-width: 900px) {
+  .cards {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+}
+
+
+
+
+
