@@ -119,8 +119,8 @@ a {
 }
 
 .details .item div:nth-child(2) {
-  color: #555;
-  font-weight: normal;
+  color: #333;
+  font-weight: bold;
   font-size: 18px;
 }
 
@@ -151,7 +151,7 @@ input {
   outline: none;
   color: #555;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 16px;
 }
 
 input[type="date"] {
@@ -170,7 +170,8 @@ input::placeholder {
   font-weight: normal;
 }
 
-button[type="submit"] {
+button[type="submit"],
+a.button {
   padding: 8px 32px;
   background-color: var(--primary-color);
   border-radius: 6px;
@@ -183,7 +184,14 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+a.button:hover {
   opacity: 0.8;
   transition: 500ms;
+}
+
+a.button {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
 }
