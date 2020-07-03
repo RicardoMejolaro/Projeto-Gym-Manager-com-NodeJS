@@ -1,6 +1,6 @@
 const fs = require('fs');
 const data = require('../file-system/data.json');
-const { age } = require('../utils/utils');
+const { age, date } = require('../utils/utils');
 
 //Create
 exports.post = (req, res) => {
@@ -8,7 +8,7 @@ exports.post = (req, res) => {
   const keys = Object.keys(req.body)
 
   for (const key of keys) {
-    if(req.body[key] == "") 
+    if (req.body[key] == "")
       return res.send("Por gentileza preencha todos os campos!")
   }
 
@@ -19,18 +19,19 @@ exports.post = (req, res) => {
   const created_at = Date.now();
 
   data.instructors.push({
-    id,  
+    id,
     avatar_url,
     name,
     birth,
     gender,
     services,
-    created_at});
+    created_at
+  });
 
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
-      if(err) return res.send('Erro ao salvar o arquivo!')
+    if (err) return res.send('Erro ao salvar o arquivo!')
 
-      return res.redirect('/instructors')
+    return res.redirect('/instructors')
   });
 
 }
@@ -43,8 +44,8 @@ exports.show = (req, res) => {
     return instructor.id == id;
   });
 
-  if(!foundInstructor) return res.send('Instrutor não encontrado!');
-    
+  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+
   const instructor = {
     ...foundInstructor,
     age: age(foundInstructor.birth),
@@ -54,4 +55,22 @@ exports.show = (req, res) => {
 
   return res.render('instructors/show', { instructor });
 
+}
+
+//Edit
+exports.edit = (req, res) => {
+  const { id } = req.params
+
+  const foundInstructor = data.instructors.find((instructor) => {
+    return instructor.id == id;
+  });
+
+  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+
+  const instructor = {
+    ...foundInstructor,
+    birth: date(foundInstructor.birth)
+  }
+
+  return res.render('instructors/edit', { instructor });
 }
