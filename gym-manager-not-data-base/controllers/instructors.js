@@ -93,6 +93,7 @@ exports.put = (req, res) => {
   const instructor = {
     ...foundInstructor,
     ...req.body,
+    id: Number(req.body.id),
     birth: Date.parse(req.body.birth)
   }
 
@@ -102,5 +103,23 @@ exports.put = (req, res) => {
     if (err) return res.send('Erro ao salvar dados no arquivo!');
 
     return res.redirect(`/instructors/${id}`);
+  });
+}
+
+//Delete
+exports.delete = (req, res) => {
+  const { id } = req.body
+
+  const filteredInstructors = data.instructors.filter((instructor) => {
+    return instructor.id != id;
+  });
+
+  data.instructors = filteredInstructors;
+
+  fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
+    if (err) return res.send('Erro ao salvar dados no arquivo!');
+
+    return res.redirect('/instructors');
+
   });
 }
