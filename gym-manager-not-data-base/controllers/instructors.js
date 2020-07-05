@@ -50,7 +50,7 @@ exports.show = (req, res) => {
     ...foundInstructor,
     age: age(foundInstructor.birth),
     services: foundInstructor.services.split(','),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at)
+    created_at: new Intl.DateTimeFormat("en-GB").format(foundInstructor.created_at)
   }
 
   return res.render('instructors/show', { instructor });
@@ -73,4 +73,34 @@ exports.edit = (req, res) => {
   }
 
   return res.render('instructors/edit', { instructor });
+}
+
+//Put
+exports.put = (req, res) => {
+  const { id } = req.body;
+  let index = 0;
+
+  const foundInstructor = data.instructors.find((instructor, foundIndex) => {
+    if (instructor.id == id) {
+      index = foundIndex;
+
+      return true
+    }
+  });
+
+  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+
+  const instructor = {
+    ...foundInstructor,
+    ...req.body,
+    birth: Date.parse(req.body.birth)
+  }
+
+  data.instructors[index] = instructor;
+
+  fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
+    if (err) return res.send('Erro ao salvar dados no arquivo!');
+
+    return res.redirect(`/instructors/${id}`);
+  });
 }
