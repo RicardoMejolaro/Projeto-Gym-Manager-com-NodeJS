@@ -1,0 +1,67 @@
+<div class="item">
+  <div>Avatar URL</div>
+  <div>
+    <input 
+      type="text"
+      name="avatar_url" 
+      placeholder="http://" 
+      value="{{ member.avatar_url }}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Member</div>
+  <div>
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Nome do member"
+      value="{{ member.name }}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Data de Nascimento</div>
+  <div>
+    <input
+     type="date" 
+     name="birth"
+     value="{{ member.birth }}">     
+  </div>
+</div>
+
+<div class="item">
+  <div>Sexo</div>
+  <div>
+    <span>
+      <input 
+        type="radio" 
+        name="gender" 
+        value="M" 
+        {% if member.gender == 'M' %}
+          checked
+        {% endif %}>Masculino</span>
+    <span>
+      <input 
+        type="radio" 
+        name="gender" 
+        value="F"
+        {% if member.gender == 'F' %}
+          checked
+        {% endif %}
+        >Feminino</span>
+  </div>
+</div>
+
+<div class="item">
+  <div>Áreas de atuação</div>
+  <div>
+    <input 
+      type="text" 
+      name="services" 
+      placeholder="Separadas por vírgula()"
+      value="{{ member.services }}">
+  </div>
+</div>
+
+<button type="submit">Salvar</button>

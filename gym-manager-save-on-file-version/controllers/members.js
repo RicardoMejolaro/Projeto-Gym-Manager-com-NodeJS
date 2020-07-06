@@ -4,11 +4,11 @@ const { age, date } = require('../utils/utils');
 
 //Index
 exports.index = (req, res) => {
-  return res.render('instructors/index', { instructors: data.instructors });
+  return res.render('members/index', { members: data.members });
 }
 //Create
 exports.create = (req, res) => {
-  return res.render('instructors/create'); 
+  return res.render('members/create'); 
 }
 //Post
 exports.post = (req, res) => {
@@ -23,10 +23,10 @@ exports.post = (req, res) => {
   let { avatar_url, name, birth, gender, services } = req.body;
 
   birth = Date.parse(birth);
-  const id = Number(data.instructors.length + 1);
+  const id = Number(data.members.length + 1);
   const created_at = Date.now();
 
-  data.instructors.push({
+  data.members.push({
     id,
     avatar_url,
     name,
@@ -39,7 +39,7 @@ exports.post = (req, res) => {
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send('Erro ao salvar o arquivo!')
 
-    return res.redirect('/instructors')
+    return res.redirect('/members')
   });
 
 }
@@ -47,83 +47,81 @@ exports.post = (req, res) => {
 exports.show = (req, res) => {
   const { id } = req.params
 
-  const foundInstructor = data.instructors.find((instructor) => {
-    return instructor.id == id;
+  const foundMember = data.members.find((member) => {
+    return member.id == id;
   });
 
-  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+  if (!foundMember) return res.send('Instrutor não encontrado!');
 
-  const instructor = {
-    ...foundInstructor,
-    age: age(foundInstructor.birth),
-    services: foundInstructor.services.split(','),
-    created_at: new Intl.DateTimeFormat("en-GB").format(foundInstructor.created_at)
+  const member = {
+    ...foundMember,
+    age: age(foundMember.birth),
   }
 
-  return res.render('instructors/show', { instructor });
+  return res.render('members/show', { member });
 
 }
 //Edit
 exports.edit = (req, res) => {
   const { id } = req.params
 
-  const foundInstructor = data.instructors.find((instructor) => {
-    return instructor.id == id;
+  const foundMember = data.members.find((member) => {
+    return member.id == id;
   });
 
-  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+  if (!foundMember) return res.send('Instrutor não encontrado!');
 
-  const instructor = {
-    ...foundInstructor,
-    birth: date(foundInstructor.birth)
+  const member = {
+    ...foundMember,
+    birth: date(foundMember.birth)
   }
 
-  return res.render('instructors/edit', { instructor });
+  return res.render('members/edit', { member });
 }
 //Put
 exports.put = (req, res) => {
   const { id } = req.body;
   let index = 0;
 
-  const foundInstructor = data.instructors.find((instructor, foundIndex) => {
-    if (instructor.id == id) {
+  const foundMember = data.members.find((member, foundIndex) => {
+    if (member.id == id) {
       index = foundIndex;
 
       return true
     }
   });
 
-  if (!foundInstructor) return res.send('Instrutor não encontrado!');
+  if (!foundMember) return res.send('Instrutor não encontrado!');
 
-  const instructor = {
-    ...foundInstructor,
+  const member = {
+    ...foundMember,
     ...req.body,
     id: Number(req.body.id),
     birth: Date.parse(req.body.birth)
   }
 
-  data.instructors[index] = instructor;
+  data.members[index] = member;
 
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send('Erro ao salvar dados no arquivo!');
 
-    return res.redirect(`/instructors/${id}`);
+    return res.redirect(`/members/${id}`);
   });
 }
 //Delete
 exports.delete = (req, res) => {
   const { id } = req.body
 
-  const filteredInstructors = data.instructors.filter((instructor) => {
-    return instructor.id != id;
+  const filteredMembers = data.members.filter((member) => {
+    return member.id != id;
   });
 
-  data.instructors = filteredInstructors;
+  data.members = filteredMembers;
 
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send('Erro ao salvar dados no arquivo!');
 
-    return res.redirect('/instructors');
+    return res.redirect('/members');
 
   });
 }
