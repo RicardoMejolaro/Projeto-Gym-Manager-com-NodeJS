@@ -20,26 +20,33 @@ exports.post = (req, res) => {
       return res.send("Por gentileza preencha todos os campos!")
   }
 
-  let { avatar_url, name, birth, gender, services } = req.body;
+  let { avatar_url, name, email, birth, gender, blood, weight, height } = req.body;
 
   birth = Date.parse(birth);
-  const id = Number(data.members.length + 1);
-  const created_at = Date.now();
+
+  let id = 1;
+  const lastMember = data.members[data.members.length - 1];
+
+  if (lastMember) {
+    id = Number(lastMember.id + 1);
+  }  
 
   data.members.push({
     id,
     avatar_url,
     name,
+    email,
     birth,
     gender,
-    services,
-    created_at
+    blood,
+    weight,
+    height
   });
 
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
-    if (err) return res.send('Erro ao salvar o arquivo!')
+    if (err) return res.send('Erro ao salvar o arquivo!');
 
-    return res.redirect('/members')
+    return res.redirect(`/members/${id}`);
   });
 
 }

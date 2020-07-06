@@ -23,7 +23,14 @@ exports.post = (req, res) => {
   let { avatar_url, name, birth, gender, services } = req.body;
 
   birth = Date.parse(birth);
-  const id = Number(data.instructors.length + 1);
+
+  let id = 1;
+  const lastMember = data.members[data.members.length - 1];
+
+  if (lastMember) {
+    id = Number(lastMember.id + 1);
+  }  
+  
   const created_at = Date.now();
 
   data.instructors.push({
@@ -39,7 +46,7 @@ exports.post = (req, res) => {
   fs.writeFile('file-system/data.json', JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send('Erro ao salvar o arquivo!')
 
-    return res.redirect('/instructors')
+    return res.redirect(`/instructors/${id}`);
   });
 
 }

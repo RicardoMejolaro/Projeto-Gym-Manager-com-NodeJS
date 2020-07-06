@@ -19,5 +19,25 @@
       "created_at": 1594054940330
     }
   ],
-  "members": []
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://source.unsplash.com/collection/8353395/500x500",
+      "name": "RICARDO HUMBERTO DO NASCIMENTO MEJOLARO",
+      "birth": 583113600000,
+      "gender": "M",
+      "created_at": 1594070308735
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://source.unsplash.com/collection/8353395/500x500",
+      "name": "Nayara",
+      "email": "nay@hotmail.com",
+      "birth": 745113600000,
+      "gender": "F",
+      "blood": "A-",
+      "weight": "45",
+      "height": "155"
+    }
+  ]
 }
