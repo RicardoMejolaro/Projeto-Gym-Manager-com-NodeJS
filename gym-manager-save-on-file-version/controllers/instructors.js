@@ -2,6 +2,12 @@ const fs = require('fs');
 const data = require('../file-system/data.json');
 const { age, date } = require('../utils/utils');
 
+//Index
+exports.index = (req, res) => {
+
+  return res.render('instructors/index', { instructors: data.instructors });
+}
+
 //Create
 exports.post = (req, res) => {
   //Validação todos os campos obrigatórios
