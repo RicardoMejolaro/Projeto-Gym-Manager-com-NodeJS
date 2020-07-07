@@ -1,5 +1,5 @@
 <h1 align=center>
-<img src="gym-manager-save-on-file-version/public/assets/logo-launchbase.svg" alt="Bootcamp LaunchBase" width="350px">
+<img src="/gym-manager-save-on-file-version/public/assets/logo-launchbase.svg" alt="Bootcamp LaunchBase" width="350px">
 </h1>
 
 <h4 align="center"> 
@@ -16,7 +16,7 @@
 - [Acrescentado ao projeto original](#💻️-Acrescentado-ao-projeto-proposto)
 - [Como usar](#💾️-Como-baixar/testar-o-projeto)
 - [Contato](#-Desenvolvido-com-💙️-por)
-- [Licença](#-Licença:)
+- [Licença](#-Licença)
 
 ---
 
