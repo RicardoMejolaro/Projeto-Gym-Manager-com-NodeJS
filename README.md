@@ -16,7 +16,7 @@
 - [Tecnologias utilizadas](#🚀️-Tecnologias-utilizadas)
 - [Acrescentado ao projeto original](#💻️-Acrescentado-ao-projeto-proposto)
 - [Como usar](#💾️-Como-baixar/testar-o-projeto)
-- [Contato](#-Desenvolvido-com-💙️-por:)
+- [Contato](#-Desenvolvido-com-💙️-por)
 - [Licença](#-Licença)
 
 ---
@@ -123,7 +123,7 @@ localhost:5000
 ```
 ---
 
-##### Desenvolvido com 💙️ por:
+#### Desenvolvido com 💙️ por
 
 ***Ricardo Mejolaro*** 
 <br/> 
