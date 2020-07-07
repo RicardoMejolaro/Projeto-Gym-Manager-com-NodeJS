@@ -1,15 +1,6 @@
 {
   "instructors": [
     {
-      "id": 1,
-      "avatar_url": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "RICARDO HUMBERTO DO NASCIMENTO MEJOLARO",
-      "birth": 583113600000,
-      "gender": "M",
-      "services": "Musculação, Crossfit, Natação",
-      "created_at": 1594078488786
-    },
-    {
       "id": 3,
       "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "name": "Nayara",
@@ -36,11 +27,11 @@
       "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "name": "Nayara",
       "email": "nay@hotmail.com",
-      "birth": 745113600000,
+      "birth": 934416000000,
       "gender": "F",
-      "blood": "AB-",
-      "weight": "45",
-      "height": "156"
+      "blood": "A-",
+      "weight": "55",
+      "height": "180"
     }
   ]
 }
