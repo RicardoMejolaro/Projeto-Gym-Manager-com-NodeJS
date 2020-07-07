@@ -17,7 +17,7 @@
 - [Acrescentado ao projeto original](#💻️-Acrescentado-ao-projeto-proposto)
 - [Como usar](#💾️-Como-baixar/testar-o-projeto)
 - [Contato](#-Desenvolvido-com-💙️-por:)
-- [Licensa](#-Licença:)
+- [Licença](#-Licença:)
 
 ---
 
