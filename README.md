@@ -17,7 +17,7 @@
 - [Acrescentado ao projeto original](#💻️-Acrescentado-ao-projeto-proposto)
 - [Como usar](#💾️-Como-baixar/testar-o-projeto)
 - [Contato](#-Desenvolvido-com-💙️-por:)
-- [Licença](#-Licença:)
+- [Licença](#-Licença)
 
 ---
 
@@ -123,7 +123,7 @@ localhost:5000
 ```
 ---
 
-#### Desenvolvido com 💙️ por:
+##### Desenvolvido com 💙️ por:
 
 ***Ricardo Mejolaro*** 
 <br/> 
@@ -131,6 +131,6 @@ localhost:5000
 <img src="gym-manager-save-on-file-version/public/assets/linkedin.png">
 </a>
 
-#### Licença
+##### Licença
 
 Este projeto está licenciado sob a licença MIT - consulte a página [LICENSE] (https://opensource.org/licenses/MIT) para obter detalhes.
