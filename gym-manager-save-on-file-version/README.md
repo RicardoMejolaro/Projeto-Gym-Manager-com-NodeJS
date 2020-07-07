@@ -1,5 +1,5 @@
 <h1 align=center>
-<img src="public/assets/logo-launchbase.svg" alt="Bootcamp LaunchBase" width="350px">
+<img src="gym-manager-save-on-file-version/public/assets/logo-launchbase.svg" alt="Bootcamp LaunchBase" width="350px">
 </h1>
 
 <h4 align="center"> 
@@ -15,8 +15,8 @@
 - [Tecnologias utilizadas](#🚀️-Tecnologias-utilizadas)
 - [Acrescentado ao projeto original](#💻️-Acrescentado-ao-projeto-proposto)
 - [Como usar](#💾️-Como-baixar/testar-o-projeto)
-- [Contato](#-Desenvolvido-com-💙️-por:)
-- [Licensa](#-Licença:)
+- [Contato](#-Desenvolvido-com-💙️-por)
+- [Licença](#-Licença:)
 
 ---
 
@@ -54,7 +54,7 @@ O LaunchBase é um treinamento no formato de bootcamp online que tem duração d
 ---
 
 <h1>
-<img src="public/assets/gym-manager.gif" alt="Gif demonstrativo Foodfy">
+<img src="gym-manager-save-on-file-version/public/assets/gym-manager.gif" alt="Gif demonstrativo Foodfy">
 </h1>
 
 ### 📝️ Sobre
@@ -122,14 +122,14 @@ localhost:5000
 ```
 ---
 
-#### Desenvolvido com 💙️ por:
+#### Desenvolvido com 💙️ por
 
 ***Ricardo Mejolaro*** 
 <br/> 
 <a href="https://www.linkedin.com/in/ricardo-mejolaro/">
-<img src="public/assets/linkedin.png">
+<img src="gym-manager-save-on-file-version/public/assets/linkedin.png">
 </a>
 
-#### Licença
+##### Licença
 
 Este projeto está licenciado sob a licença MIT - consulte a página [LICENSE] (https://opensource.org/licenses/MIT) para obter detalhes.
