@@ -54,7 +54,7 @@ O LaunchBase é um treinamento no formato de bootcamp online que tem duração d
 ---
 
 <h1>
-<img src="gym-manager-save-on-file-version/public/assets/gym-manager.gif" alt="Gif demonstrativo Foodfy">
+<img src="/gym-manager-save-on-file-version/public/assets/gym-manager.gif" alt="Gif demonstrativo Foodfy">
 </h1>
 
 ### 📝️ Sobre
@@ -127,7 +127,7 @@ localhost:5000
 ***Ricardo Mejolaro*** 
 <br/> 
 <a href="https://www.linkedin.com/in/ricardo-mejolaro/">
-<img src="gym-manager-save-on-file-version/public/assets/linkedin.png">
+<img src="/gym-manager-save-on-file-version/public/assets/linkedin.png">
 </a>
 
 ##### Licença
