@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "Ricardo Mejolaro",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "method-override": "^3.0.0",
