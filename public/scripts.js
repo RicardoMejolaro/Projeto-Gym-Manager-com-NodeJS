@@ -17,5 +17,4 @@ formDelete.addEventListener("submit", (event) => {
   } else {
     alert("Registro deletado com sucesso!");
   }
-  
 });
