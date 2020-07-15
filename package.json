@@ -1,5 +1,5 @@
 {
-  "name": "gym-manager-version-not-database",
+  "name": "gym-manager",
   "version": "1.0.0",
   "description": "O seu gerenciador de academias",
   "main": "server.js",
