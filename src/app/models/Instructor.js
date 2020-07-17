@@ -3,7 +3,7 @@ const db = require('../../config/db');
 module.exports = {
   all(callback) {
     db.query(`SELECT * FROM instructors`, (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
+      if (err) throw `Erro no banco de dados! ${err}`;
 
       callback(results.rows);
     });
@@ -22,7 +22,7 @@ module.exports = {
         `
 
     db.query(query, data, (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
+      if (err) throw `Erro no banco de dados! ${err}`;
 
       callback(results.rows[0]);
 
@@ -30,7 +30,7 @@ module.exports = {
   },
   find(id, callback) {
     db.query(`SELECT * FROM instructors where id = $1`, [id], (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
+      if (err) throw `Erro no banco de dados! ${err}`;
 
       callback(results.rows[0]);
     });
@@ -46,7 +46,7 @@ module.exports = {
           WHERE id = $6
     `
     db.query(query, data, (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
+      if (err) throw `Erro no banco de dados! ${err}`;
 
       callback();
 
