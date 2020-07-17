@@ -47,7 +47,13 @@ module.exports = {
     
   },
   edit(req, res) {
-    return
+    Instructor.find(req.params.id, (instructor) => {
+      if(!instructor) return res.send('Instrutor não localizado!');
+
+      instructor.birth = date(instructor.birth).iso;
+
+      return res.render('instructors/edit', { instructor })
+    });
   },
   put(req, res) {
     //Validação todos os campos obrigatórios
@@ -57,7 +63,21 @@ module.exports = {
       if (req.body[key] == "")
         return res.send("Por gentileza preencha todos os campos!")
     }
-    return
+    
+    const { avatar_url, name, birth, gender, services, id } = req.body;
+
+    const data = [
+      avatar_url,
+      name,
+      date(birth).iso,
+      gender,
+      services,
+      id
+    ];
+
+    Instructor.update(data, () => {
+     return res.redirect(`/instructors/${id}`);
+    });
   },
   delete(req, res) {
     return

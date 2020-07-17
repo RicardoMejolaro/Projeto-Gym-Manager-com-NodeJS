@@ -34,5 +34,22 @@ module.exports = {
 
       callback(results.rows[0]);
     });
+  },
+  update(data, callback) {
+    const query = `
+          UPDATE INSTRUCTORS SET 
+          avatar_url=($1),
+          name=($2),
+          birth=($3),
+          gender=($4),
+          services=($5)
+          WHERE id = $6
+    `
+    db.query(query, data, (err, results) => {
+      if (err) return res.send('Erro no banco de dados!');
+
+      callback();
+
+    });
   }
 }
