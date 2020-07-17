@@ -3,7 +3,12 @@ const db = require('../../config/db');
 
 module.exports = {
   index(req, res) {
-    return res.render('instructors/index');
+    db.query(`SELECT * FROM instructors`, (err, results) => {
+      if (err) return res.send('Erro no banco de dados!');
+
+      return res.render('instructors/index', { instructors: results.rows });
+    });
+    
   },
   create(req, res) {
     return res.render('instructors/create');
