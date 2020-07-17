@@ -51,5 +51,12 @@ module.exports = {
       callback();
 
     });
+  },
+  delete(id, callback) {
+    db.query(`DELETE FROM instructors WHERE id = $1`, [id], (err, results) => {
+      if (err) throw `Erro no banco de dados! ${err}`;
+
+      callback();
+    });
   }
 }
