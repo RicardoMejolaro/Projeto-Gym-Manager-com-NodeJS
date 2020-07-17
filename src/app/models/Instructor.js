@@ -27,5 +27,12 @@ module.exports = {
       callback(results.rows[0]);
 
     });
+  },
+  find(id, callback) {
+    db.query(`SELECT * FROM instructors where id = $1`, [id], (err, results) => {
+      if (err) return res.send('Erro no banco de dados!');
+
+      callback(results.rows[0]);
+    });
   }
 }

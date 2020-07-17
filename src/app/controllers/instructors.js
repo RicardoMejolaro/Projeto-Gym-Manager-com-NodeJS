@@ -35,7 +35,16 @@ module.exports = {
      });
   },
   show(req, res) {
-    return
+    Instructor.find(req.params.id, (instructor) => {
+      if(!instructor) return res.send('Instrutor não localizado!');
+
+      instructor.age = age(instructor.birth);
+      instructor.services = instructor.services.split(',');
+      instructor.created_at = date(instructor.created_at).format;
+
+      return res.render('instructors/show', { instructor })
+    });
+    
   },
   edit(req, res) {
     return
