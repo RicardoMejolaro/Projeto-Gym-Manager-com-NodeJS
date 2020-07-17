@@ -1,55 +1,38 @@
 const { age, date } = require('../../lib/utils');
-const db = require('../../config/db');
+const Instructor = require('../models/Instructor');
 
 module.exports = {
   index(req, res) {
-    db.query(`SELECT * FROM instructors`, (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
-
-      return res.render('instructors/index', { instructors: results.rows });
+    Instructor.all((instructors) => {
+      return res.render('instructors/index', { instructors });
     });
-    
   },
   create(req, res) {
     return res.render('instructors/create');
   },
   post(req, res) {
-    //Validação todos os campos obrigatórios
-    const keys = Object.keys(req.body)
+     //Validação todos os campos obrigatórios
+     const keys = Object.keys(req.body)
 
-    for (const key of keys) {
-      if (req.body[key] == "")
-        return res.send("Por gentileza preencha todos os campos!")
-    }
+     for (const key of keys) {
+       if (req.body[key] == "")
+         return res.send("Por gentileza preencha todos os campos!")
+     }
 
-    const query = `
-      INSERT INTO instructors (
-        avatar_url,
-        name,
-        birth,
-        gender,
-        services,
-        created_at
-      ) VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id
-    `
-     const { avatar_url, name, birth, gender, services} = req.body   
+     const { avatar_url, name, birth, gender, services } = req.body;
 
-    const values = [
-      avatar_url,
-      name,
-      date(birth).iso,
-      gender,
-      services,
-      date(Date.now()).iso
-    ];
+     const data = [
+       avatar_url,
+       name,
+       date(birth).iso,
+       gender,
+       services,
+       date(Date.now()).iso
+     ];
 
-    db.query(query, values, (err, results) => {
-      if (err) return res.send('Erro no banco de dados!');
-
-      return res.redirect(`/instructors/${results.rows[0].id}`);
-    });
-
+     Instructor.create(data, (instructor) => {
+      return res.redirect(`/instructors/${instructor.id}`);
+     });
   },
   show(req, res) {
     return
