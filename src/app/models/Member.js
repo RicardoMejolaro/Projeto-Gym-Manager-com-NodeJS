@@ -2,7 +2,10 @@ const db = require('../../config/db');
 
 module.exports = {
   all(callback) {
-    db.query(`SELECT * FROM members`, (err, results) => {
+    db.query(`
+    SELECT * 
+    FROM members
+    ORDER BY name ASC`, (err, results) => {
       if (err) throw `Erro no banco de dados! ${err}`;
 
       callback(results.rows);
