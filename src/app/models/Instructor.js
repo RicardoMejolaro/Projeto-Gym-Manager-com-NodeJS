@@ -3,9 +3,11 @@ const db = require('../../config/db');
 module.exports = {
   all(callback) {
     db.query(`
-    SELECT * 
+    SELECT instructors.*, count(members) AS total_members
     FROM instructors
-    ORDER BY name ASC`, (err, results) => {
+    LEFT JOIN members ON (instructors.id = members.instructor_id)
+    GROUP BY instructors.id
+    ORDER BY total_members DESC`, (err, results) => {
       if (err) throw `Erro no banco de dados! ${err}`;
 
       callback(results.rows);
