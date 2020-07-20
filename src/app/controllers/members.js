@@ -8,7 +8,9 @@ module.exports = {
     });
   },
   create(req, res) {
-    return res.render('members/create');
+    Member.instructorsSelectOptions((options) => {
+      return res.render('members/create', { instructorOptions: options });
+    });
   },
   post(req, res) {
      //Validação todos os campos obrigatórios
@@ -19,7 +21,7 @@ module.exports = {
          return res.send("Por gentileza preencha todos os campos!")
      }
 
-     const { avatar_url, name, email, birth, gender, blood, weight, height } = req.body;
+     const { avatar_url, name, email, birth, gender, blood, weight, height, instructor } = req.body;
 
      const data = [
        avatar_url,
@@ -29,7 +31,8 @@ module.exports = {
        gender,
        blood,
        weight,
-       height
+       height,
+       instructor
      ];
 
      Member.create(data, (member) => {
@@ -52,7 +55,10 @@ module.exports = {
 
       member.birth = date(member.birth).iso;
 
-      return res.render('members/edit', { member })
+      Member.instructorsSelectOptions((options) => {
+        return res.render('members/edit', { member, instructorOptions: options });
+      });
+
     });
   },
   put(req, res) {
@@ -64,7 +70,7 @@ module.exports = {
         return res.send("Por gentileza preencha todos os campos!")
     }
     
-    const { avatar_url, name, email, birth, gender, blood, weight, height, id } = req.body;
+    const { avatar_url, name, email, birth, gender, blood, weight, height, instructor, id } = req.body;
 
     const data = [
       avatar_url,
@@ -75,6 +81,7 @@ module.exports = {
       blood,
       weight,
       height,
+      instructor,
       id
     ];
 
