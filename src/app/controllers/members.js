@@ -3,9 +3,17 @@ const Member = require('../models/Member');
 
 module.exports = {
   index(req, res) {
-    Member.all((members) => {
-      return res.render('members/index', { members });
-    });
+    const { filter } = req.query;
+
+    if (filter) {
+      Member.findBy(filter, (members) => {
+        return res.render('members/index', { members, filter });
+      });
+    } else {
+      Member.all((members) => {
+        return res.render('members/index', { members });
+      });
+    }
   },
   create(req, res) {
     Member.instructorsSelectOptions((options) => {

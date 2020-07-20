@@ -3,40 +3,49 @@ const Instructor = require('../models/Instructor');
 
 module.exports = {
   index(req, res) {
-    Instructor.all((instructors) => {
-      return res.render('instructors/index', { instructors });
-    });
+    const { filter } = req.query;
+
+    if (filter) {
+      Instructor.findBy(filter, (instructors) => {
+        return res.render('instructors/index', { instructors, filter });
+      });
+    } else {
+      Instructor.all((instructors) => {
+        return res.render('instructors/index', { instructors });
+      });
+    }
+
   },
   create(req, res) {
     return res.render('instructors/create');
   },
   post(req, res) {
-     //Validação todos os campos obrigatórios
-     const keys = Object.keys(req.body)
+    //Validação todos os campos obrigatórios
+    const keys = Object.keys(req.body)
 
-     for (const key of keys) {
-       if (req.body[key] == "")
-         return res.send("Por gentileza preencha todos os campos!")
-     }
+    for (const key of keys) {
+      if (req.body[key] == "")
+        return res.send("Por gentileza preencha todos os campos!")
+    }
 
-     const { avatar_url, name, birth, gender, services } = req.body;
+    const { avatar_url, name, birth, gender, services } = req.body;
 
-     const data = [
-       avatar_url,
-       name,
-       date(birth).iso,
-       gender,
-       services,
-       date(Date.now()).iso
-     ];
+    const data = [
+      avatar_url,
+      name,
+      date(birth).iso,
+      gender,
+      services,
+      date(Date.now()).iso
+    ];
 
-     Instructor.create(data, (instructor) => {
+    Instructor.create(data, (instructor) => {
       return res.redirect(`/instructors/${instructor.id}`);
-     });
+    });
   },
   show(req, res) {
     Instructor.find(req.params.id, (instructor) => {
-      if(!instructor) return res.send('Instrutor não localizado!');
+      if (!instructor) return res.send('Instrutor não localizado!');
 
       instructor.age = age(instructor.birth);
       instructor.services = instructor.services.split(',');
@@ -44,11 +53,11 @@ module.exports = {
 
       return res.render('instructors/show', { instructor })
     });
-    
+
   },
   edit(req, res) {
     Instructor.find(req.params.id, (instructor) => {
-      if(!instructor) return res.send('Instrutor não localizado!');
+      if (!instructor) return res.send('Instrutor não localizado!');
 
       instructor.birth = date(instructor.birth).iso;
 
@@ -63,7 +72,7 @@ module.exports = {
       if (req.body[key] == "")
         return res.send("Por gentileza preencha todos os campos!")
     }
-    
+
     const { avatar_url, name, birth, gender, services, id } = req.body;
 
     const data = [
@@ -76,13 +85,13 @@ module.exports = {
     ];
 
     Instructor.update(data, () => {
-     return res.redirect(`/instructors/${id}`);
+      return res.redirect(`/instructors/${id}`);
     });
   },
   delete(req, res) {
     Instructor.delete(req.body.id, () => {
       return res.redirect(`/instructors`);
-     });
+    });
   },
 }
 

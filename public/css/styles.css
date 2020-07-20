@@ -261,7 +261,8 @@ tbody tr td:last-child a,
 }
 
 .table-container thead tr th:last-child,
-td:last-child {
+td:last-child,
+td:nth-child(3) {
   text-align: center;
 }
 
@@ -270,3 +271,32 @@ td:last-child:hover,
   opacity: 0.5;
 }
 
+/*=======FILTERS=========*/
+.table-container .header-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.table-container .header-table a {
+  margin: 0;
+  width: 120px;
+}
+
+.table-container .header-table form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-container .header-table form input {
+  border: 1px solid #eee;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+
+.table-container .header-table form button {
+  margin: 0;
+}
