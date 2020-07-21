@@ -78,4 +78,30 @@ module.exports = {
       callback();
     });
   },
+  paginate(params) {
+    const { filter, limit, offset, callback } = params;
+
+    let query = `
+    SELECT instructors.*, count(members) AS total_members
+    FROM instructors
+    LEFT JOIN members ON (instructors.id = members.instructor_id)`
+
+    if (filter) {
+      query = `${query}
+      WHERE instructors.name ILIKE '%${filter}%'
+      OR instructors.services ILIKE '%${filter}%'
+      `
+    }
+
+    query = `${query}
+    GROUP BY instructors.id
+    ORDER BY total_members DESC
+    LIMIT $1 OFFSET $2`
+
+    db.query(query, [limit, offset], (err, results) => {
+      if(err) throw `Erro no banco de dados ${err}`
+
+      callback(results.rows);
+    });
+  }
 }
