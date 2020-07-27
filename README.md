@@ -232,7 +232,6 @@ Incluir o seus dados PostgreSQL nos campos: "user" e "password"
             <td>yes</td>
           </tr>
           <tr>
-          <tr>
             <td>blood</td>
             <td>text</td>
             <td></td>
