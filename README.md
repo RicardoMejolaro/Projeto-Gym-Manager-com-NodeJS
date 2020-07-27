@@ -3,7 +3,10 @@
 
 ---
 
-🚀 Site Gym Manager com backend ✔️
+🚀 Site Gym Manager com NodeJS e banco de dados PostgreSQL ✔️ <br>
+
+<img src="https://camo.githubusercontent.com/a45bd10a7ea5a30b5665d9869b0ce1324fa90350/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6163746976652d737563636573732e737667" alt="Status" data-canonical-src="https://img.shields.io/badge/status-active-success.svg" style="max-width:100%;">
+<img src="https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="License" data-canonical-src="https://img.shields.io/badge/license-MIT-blue.svg" style="max-width:100%;">
 </h1>
 
 ## 📑️ Índice
@@ -21,13 +24,13 @@
 ## 📝️ Sobre
 
 O projeto trata-se de um site gerenciador de academia criado para consolidar o aprendizado
-durante o módulo 4 do Bootcamp, onde deve-se utilizar HTML, CSS, JavaScript,
-NodeJS, Express, Fs, Template Engine Nunjucks contendo menus, página index com visualização geral, páginas de criação, visualização, edição, exclusão de instrutores e membros da academia.
+durante o Bootcamp, onde deve-se utilizar HTML, CSS, JavaScript,
+NodeJS, Express, Template Engine Nunjucks, Banco de dados Postgres, no modelo MVC contendo menus, página index com visualização geral, páginas de criação, visualização, edição, exclusão de instrutores e membros da academia, paginação e filtros.
 
 ## Apresentação do site
 
 <h1>
-<img src="public/assets/gym-manager.gif" alt="Gym Manager">
+<img src="public/assets/gym-manager-com-db.gif" alt="Gym Manager">
 </h1>
 
 ---
@@ -41,8 +44,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - JavaScript
 - NodeJS
 - Express
-- Fs
 - Template Engine Nunjucks
+- Banco de dados PostgreSQL
 
 ---
 
@@ -55,7 +58,9 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ### 💾️ Como baixar/testar o projeto
 
-- Você irá precisar instalar o [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/pt-br/download/) + [Visual Studio code](https://code.visualstudio.com/).
+- Você irá precisar instalar o [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/pt-br/download/), [PostgreSQL](https://www.postgresql.org/), [Postbird](https://www.electronjs.org/apps/postbird) + [Visual Studio code](https://code.visualstudio.com/).
+
+
 
 ```bash
 # Versões mínimas ou superiores.
@@ -80,6 +85,41 @@ code . ||  cd gym-manager (Passo acima)
 
 #Com o terminal aberto rodar o comando
 $ npm install (para instalar as dependências necessárias)
+
+#Criar o banco de dados no seu PostgreSQL
+O meu está nomeado como: gymmanager
+
+#No arquivo db.js
+No campo "database", incluir o nome do banco criado. (Passo acima)
+Incluir o seus dados PostgreSQL nos campos: "user" e "password"
+
+#Criar a tabela instructors
+Nome da tabela: instructors
+
+column	    type	    max length	default	        primary key	null
+
+id	        integer		            auto increment	yes	        no
+avatar_url	text                                                yes
+name  	    text                                                yes
+birth	    timestamp                                           yes
+gender	    text                                                yes 
+services	text                                                yes
+created_at	timestamp                                           yes
+
+#Criar a tabela members
+Nome da tabela: members
+
+column	      type	    max length	default	        primary key	null	
+id	          integer		        auto increment	yes	        no	
+avatar_url	  text				                                yes	
+name	      text				                                yes
+email	      text				                                yes
+gender	      text				                                yes	
+birth	      timestamp				                            yes	
+blood	      text				                                yes	
+weight	      integer				                            yes
+height	      integer				                            yes
+instructor_id integer				                            yes
 
 #Agora só rodar o projeto com o comando
 $ npm start
