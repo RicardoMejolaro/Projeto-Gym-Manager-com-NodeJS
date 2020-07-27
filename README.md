@@ -110,8 +110,8 @@ created_at	timestamp                                         yes
 Nome da tabela: members
 
 column	      type	    max length	default	        primary key	null	
-id	          integer		        auto increment	yes	        no	
-avatar_url	  text				                                yes	
+id         integer		        auto increment	yes	        no	
+avatar_ur text				                                yes	
 name	      text				                                yes
 email	      text				                                yes
 gender	      text				                                yes	
