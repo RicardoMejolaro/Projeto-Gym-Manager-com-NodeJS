@@ -99,12 +99,12 @@ Nome da tabela: instructors
 column	    type	    max length	default	        primary key	null
 
 id	        integer		            auto increment	yes	        no
-avatar_url	text                                                yes
-name  	    text                                                yes
-birth	    timestamp                                           yes
-gender	    text                                                yes 
-services	text                                                yes
-created_at	timestamp                                           yes
+avatar_url	text                                              yes
+name  	    text                                              yes
+birth	      timestamp                                         yes
+gender	    text                                              yes 
+services	  text                                              yes
+created_at	timestamp                                         yes
 
 #Criar a tabela members
 Nome da tabela: members
