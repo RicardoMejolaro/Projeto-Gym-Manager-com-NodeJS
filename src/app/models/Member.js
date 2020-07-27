@@ -91,5 +91,38 @@ module.exports = {
 
       callback(results.rows);
     });
+  },
+  paginate(params) {
+    const { filter, limit, offset, callback } = params;
+
+    let query = "",
+        filterQuery = "",
+        totalQuery = `(
+          SELECT count(*) FROM members
+          ) AS total`
+
+    if (filter) {
+      filterQuery = `${query}
+      WHERE members.name ILIKE '%${filter}%'
+      OR members.email ILIKE '%${filter}%'
+      `
+      totalQuery = `(
+        SELECT count(*) FROM members
+        ${filterQuery}
+        ) as total
+      `
+    }
+
+    query = `
+    SELECT members.*, ${totalQuery}
+    FROM members
+    ${filterQuery}
+    GROUP BY members.id LIMIT $1 OFFSET $2`
+
+    db.query(query, [limit, offset], (err, results) => {
+      if(err) throw `Erro no banco de dados ${err}`
+
+      callback(results.rows);
+    });
   }
 }

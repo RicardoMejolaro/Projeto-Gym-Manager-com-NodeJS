@@ -9,21 +9,16 @@
     <div class="header-table">
       <a class="button" href="/instructors/create">Novo</a>
       <form action="/instructors" method="GET">
-        <input 
-          type="text"
-          name="filter"
-          placeholder="Nome ou Atendimento"
-          value="{{ filter }}"
-          >
-          <button type="submit">Filtrar</button>
+        <input type="text" name="filter" placeholder="Nome ou Atendimento" value="{{ filter }}">
+        <button type="submit">Filtrar</button>
       </form>
     </div>
     <table>
       <thead>
         <tr>
           <th>Instrutor</th>
-          <th>Serviços</th>
-          <th>Total de Alunos</th>
+          <th class="viewOptional">Serviços</th>
+          <th class="viewOptional">Total de Alunos</th>
           <th>Ação</th>
         </tr>
       </thead>
@@ -33,8 +28,8 @@
             <td>
               <span style="background-image: url({{ instructor.avatar_url }})"></span>
               {{ instructor.name }}</td>
-            <td>{{ instructor.services }}</td>
-            <td>{{ instructor.total_members }}</td>
+            <td class="viewOptional">{{ instructor.services }}</td>
+            <td class="viewOptional">{{ instructor.total_members }}</td>
             <td>
               <a href="/instructors/{{ instructor.id }}">Ver</a>
             </td>
@@ -42,5 +37,70 @@
         {% endfor %}
       </tbody>
     </table>
+
+           <div class="pagination"
+        data-page={{pagination.page}}
+        data-total={{pagination.total}}
+        data-filter={{filter}}
+      ></div>
   </div>
+
+  <script>
+
+    function paginate(selectedPage, totalPages) {
+      let pages = [],
+        oldPage;
+
+      for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+
+        const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
+        const pagesAfterSelectedPage = currentPage <= selectedPage + 2;
+        const pagesBeforeSelectedPage = currentPage >= selectedPage - 2;
+
+        if (firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage) {
+          if (oldPage && currentPage - oldPage > 2) {
+            pages.push("...")
+          }
+
+          if (oldPage && currentPage - oldPage == 2) {
+            pages.push(oldPage + 1)
+          }
+
+          pages.push(currentPage);
+
+          oldPage = currentPage;
+        }
+      }
+      return pages;
+    }
+
+    function createPagination(pagination) {
+      const filter = pagination.dataset.filter;
+      const page = Number(pagination.dataset.page);
+      const total = Number(pagination.dataset.total);
+      const pages = paginate(page, total);
+
+      let elements = "";
+
+      for (let page of pages) {
+        if(String(page).includes("...")) {
+          elements += `<span>${page}</span>`
+        } else {
+
+            if(filter) {
+              elements += `<a href="?page=${page}&filter={{filter}}">${page}</a>`
+            } else {
+              elements += `<a href="?page=${page}">${page}</a>`
+            }
+          } 
+      }
+      pagination.innerHTML = elements;
+    }
+
+    const pagination = document.querySelector('.pagination')
+
+    if(pagination) {
+      createPagination(pagination);
+    }
+  </script>
 {% endblock %}

@@ -204,9 +204,10 @@ a.button {
   box-sizing: border-box;
 }
 
-.table-container table {
-  width: 100%;  
+.table-container table {  
+  width: 100%;
   border-spacing: 0;
+  box-sizing: border-box;
 }
 
 .table-container thead tr th {
@@ -299,4 +300,29 @@ td:last-child:hover,
 
 .table-container .header-table form button {
   margin: 0;
+}
+
+/*==============PAGINAÇÃO=========*/
+.pagination {
+  width: 100%;
+  height: 20px;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--primary-color);
+  margin-right: 16px;
+  font-weight: bold;
+}
+
+.pagination a {
+  border: 2px solid var(--primary-color);
+  padding: 5px;
+}
+
+.pagination a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }

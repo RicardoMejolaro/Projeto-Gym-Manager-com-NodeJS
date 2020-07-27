@@ -10,11 +10,16 @@ for (const item of menuItems) {
 
 //Lógica confirmação de deletar
 const formDelete = document.querySelector("#form-delete");
-formDelete.addEventListener("submit", (event) => {
-  const confirmation = confirm("Deseja realmente deletar?");
-  if(!confirmation) {
-    event.preventDefault();
-  } else {
-    alert("Registro deletado com sucesso!");
-  }
-});
+
+if (formDelete) {
+  formDelete.addEventListener("submit", (event) => {
+    const confirmation = confirm("Deseja realmente deletar?");
+    if (!confirmation) {
+      event.preventDefault();
+    } else {
+      alert("Registro deletado com sucesso!");
+    }
+  });
+}
+
+

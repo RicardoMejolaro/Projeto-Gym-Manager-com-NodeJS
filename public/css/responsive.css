@@ -10,6 +10,7 @@
   /*======INDEX INSTRUCTORS===========*/
 .table-container {
   display: block;
+  width: 95%;
   padding: 40px;
   box-sizing: border-box;
 }
@@ -27,11 +28,52 @@ tbody tr td:first-child {
 
 tbody tr td:first-child span {
   display: none;
-
 }
 
 .viewOptional {
   display: none;
 }
 
+/*=======FILTERS=========*/
+.table-container .header-table {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 32px;
+}
+
+.table-container .header-table a {
+  margin: 0;
+  width: 100%;
+}
+
+.table-container .header-table form {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-top: 32px;
+  
+}
+
+.table-container .header-table form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.table-container table {  
+  width: 100%;
+  border-spacing: 0;
+  box-sizing: border-box;
+}
+
+}
+
+@media(min-width: 640px) and (max-width: 1050px) {
+  .viewOptional {
+    display: none;
+  }
+
+  .table-container .header-table {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    margin-bottom: 32px;
+  }
 }

@@ -3,17 +3,28 @@ const Member = require('../models/Member');
 
 module.exports = {
   index(req, res) {
-    const { filter } = req.query;
+    let { filter, page, limit } = req.query;
 
-    if (filter) {
-      Member.findBy(filter, (members) => {
-        return res.render('members/index', { members, filter });
-      });
-    } else {
-      Member.all((members) => {
-        return res.render('members/index', { members });
-      });
+    page = page || 1;
+    limit = limit || 2;
+    let offset = limit * (page - 1);
+
+    const params = {
+      filter,
+      page,
+      limit,
+      offset,
+      callback(members) {
+        
+        const pagination = {
+          total: members[0] ? Math.ceil(members[0].total / limit) : 0,
+          page
+        }
+        return res.render('members/index', { members, pagination, filter });
+      }
     }
+
+    Member.paginate(params)
   },
   create(req, res) {
     Member.instructorsSelectOptions((options) => {

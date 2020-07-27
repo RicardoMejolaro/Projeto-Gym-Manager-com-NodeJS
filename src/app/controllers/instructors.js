@@ -6,7 +6,7 @@ module.exports = {
     let { filter, page, limit } = req.query;
 
     page = page || 1;
-    limit = limit || 2;
+    limit = limit || 3;
     let offset = limit * (page - 1);
 
     const params = {
@@ -15,22 +15,17 @@ module.exports = {
       limit,
       offset,
       callback(instructors) {
-        return res.render('instructors/index', { instructors, filter });
+        
+        const pagination = {
+          total: instructors[0] ? Math.ceil(instructors[0].total / limit) : 0,
+          page
+        }
+        return res.render('instructors/index', { instructors, pagination, filter });
       }
     }
 
     Instructor.paginate(params)
 
-/*
-    if (filter) {
-      Instructor.findBy(filter, (instructors) => {
-        return res.render('instructors/index', { instructors, filter });
-      });
-    } else {
-      Instructor.all((instructors) => {
-        return res.render('instructors/index', { instructors });
-      });
-    }*/
   },
   create(req, res) {
     return res.render('instructors/create');
