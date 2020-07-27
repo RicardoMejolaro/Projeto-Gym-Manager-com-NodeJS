@@ -93,33 +93,180 @@ O meu está nomeado como: gymmanager
 No campo "database", incluir o nome do banco criado. (Passo acima)
 Incluir o seus dados PostgreSQL nos campos: "user" e "password"
 
+```
+```bash
 #Criar a tabela instructors
-Nome da tabela: instructors
+```
+ <table>
+      <thead>
+        <tr>
+          <th>column</th>
+          <th>type</th>
+          <th>max length</th>
+          <th>default</th>
+          <th>primary key</th>
+          <th>null</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>id</td>
+            <td>integer</td>
+            <td></td>
+            <td>auto increment</td>
+            <td>yes</td>
+            <td>no</td>
+          </tr>
+          <tr>
+            <td>avatar_url</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>birth</td>
+            <td>timestamp</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>gender</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>services</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>timestamp</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+      </tbody>
+</table>
 
-column	    type	    max length	default	        primary key	null
-
-id	        integer		            auto increment	yes	        no
-avatar_url	text                                                yes
-name  	    text                                                yes
-birth	    timestamp                                           yes
-gender	    text                                                yes 
-services	text                                                yes
-created_at	timestamp                                           yes
-
+```bash
 #Criar a tabela members
-Nome da tabela: members
+```
+ <table>
+      <thead>
+        <tr>
+          <th>column</th>
+          <th>type</th>
+          <th>max length</th>
+          <th>default</th>
+          <th>primary key</th>
+          <th>null</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>id</td>
+            <td>integer</td>
+            <td></td>
+            <td>auto increment</td>
+            <td>yes</td>
+            <td>no</td>
+          </tr>
+          <tr>
+            <td>avatar_url</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>email</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+            <td>gender</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>birth</td>
+            <td>timestamp</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+          <tr>
+            <td>blood</td>
+            <td>text</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>weight</td>
+            <td>integer</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>height</td>
+            <td>integer</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>instructor_id</td>
+            <td>integer</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>yes</td>
+          </tr>
+      </tbody>
+</table>
 
-column	      type	    max length	default	        primary key	null	
-id	          integer		        auto increment	yes	        no	
-avatar_url	  text				                                yes	
-name	      text				                                yes
-email	      text				                                yes
-gender	      text				                                yes	
-birth	      timestamp				                            yes	
-blood	      text				                                yes	
-weight	      integer				                            yes
-height	      integer				                            yes
-instructor_id integer				                            yes
+```bash
 
 #Agora só rodar o projeto com o comando
 $ npm start
