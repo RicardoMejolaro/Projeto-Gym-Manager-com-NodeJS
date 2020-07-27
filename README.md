@@ -94,9 +94,9 @@ No campo "database", incluir o nome do banco criado. (Passo acima)
 Incluir o seus dados PostgreSQL nos campos: "user" e "password"
 
 ```
+
 ```bash
 #Criar a tabela instructors
-<<<<<<< HEAD
 ```
  <table>
       <thead>
@@ -168,23 +168,9 @@ Incluir o seus dados PostgreSQL nos campos: "user" e "password"
           </tr>
       </tbody>
 </table>
-=======
-Nome da tabela: instructors
-
-column	    type	    max length	default	        primary key	null
-
-id	        integer		            auto increment	yes	        no
-avatar_url	text                                              yes
-name  	    text                                              yes
-birth	      timestamp                                         yes
-gender	    text                                              yes 
-services	  text                                              yes
-created_at	timestamp                                         yes
->>>>>>> 47895260ba1d6a8deec3db9395b1db3d8e93cd55
 
 ```bash
 #Criar a tabela members
-<<<<<<< HEAD
 ```
  <table>
       <thead>
@@ -282,21 +268,6 @@ created_at	timestamp                                         yes
 </table>
 
 ```bash
-=======
-Nome da tabela: members
-
-column	      type	    max length	default	        primary key	null	
-id         integer		        auto increment	yes	        no	
-avatar_ur text				                                yes	
-name	      text				                                yes
-email	      text				                                yes
-gender	      text				                                yes	
-birth	      timestamp				                            yes	
-blood	      text				                                yes	
-weight	      integer				                            yes
-height	      integer				                            yes
-instructor_id integer				                            yes
->>>>>>> 47895260ba1d6a8deec3db9395b1db3d8e93cd55
 
 #Agora só rodar o projeto com o comando
 $ npm start
